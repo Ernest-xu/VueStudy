@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../../assets/js/vue.min.js"></script> 
+		<title>Component 父子组件关系</title>
+	</head>
+
+	<body>
+		<h1>Component 父子组件关系</h1>
+		<hr />
+		
+		<div id="app">
+			<jspang></jspang>
+		</div>
+		
+		<script type="text/javascript">
+// 			var jspang = {
+// 				template:'<div>Panda from China!</div>',
+// 				
+// 			};
+			var city = {
+				template:'<div>Sichan of China</div>'
+			};
+			var jspang = {
+				template:'<div><p>Panda from China!</p><city></city><div>',
+				components:{
+					"city" : city
+				}
+			}
+			var app = new Vue({
+				el:"#app",
+				data:{},
+				components:{
+					"jspang":jspang
+				}
+			});
+		</script>
+	</body>
+
+</html>

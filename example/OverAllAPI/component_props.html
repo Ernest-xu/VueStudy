@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.min.js"></script>
+    <title>Component 组件props 属性设置</title>
+</head>
+<body>
+    <h1>Component 组件props 属性设置</h1>
+    <hr>
+    <div id="app">
+      <panda here="China"></panda>
+	  <ernest from-here="China"></ernest>
+	  <gudange v-bind:here="message"><gudange>
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+			data:{
+				message:'SiChuan'
+			},
+            components:{
+                "panda":{
+                    template:`<div style="color:red;">Panda from {{ here }}.</div>`,
+                    props:['here']
+                },
+				"ernest":{
+					template:'<div style="color:green;">ernest from {{fromHere}}<div>',
+					props:['fromHere']
+				},
+				"gudange":{
+					template:'<div style="color:blue;">gudange from {{here}}<div>',
+					props:['here']
+				}
+            }
+        })
+    </script>
+</body>
+</html>

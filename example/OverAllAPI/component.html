@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../../assets/js/vue.min.js"></script> 
+		<title>Component 初识组件</title>
+	</head>
+
+	<body>
+		<h1>Component 初识组件</h1>
+		<div id="app">
+			<jspang></jspang>
+			<panda><panda>
+		</div>
+		
+		<script type="text/javascript">
+			Vue.component('jspang',{
+				template:'<div style="color:red;">全局化注册的jspang标签</div>'		
+			});
+			var app = new Vue({
+				el:"#app",
+				data:{},
+				components:{
+					"panda" : {
+						template:'<div style="color:red;">局部注册的panda标签</div>'
+					}
+					
+				}
+			});
+		</script>
+	</body>
+
+</html>

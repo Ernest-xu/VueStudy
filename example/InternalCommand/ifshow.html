@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+ 
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>ifshow</title>
+		<script type="text/javascript" src="../../assets/js/vue.js" ></script>
+	</head>
+	<body>
+		<h1>if</h1>
+		<br />
+		<div id="app">
+			
+			<div v-if="isLogin"> 你好！ Ernest</div>
+			<div v-else>请登录后操作</div>
+			
+			
+			
+		</div>
+		<h2>show</h2>
+		<div id="app1">
+			<div v-show="isLogin">你好！ Ernest</div>
+			
+		</div>
+		<script type="text/javascript">
+			
+			
+			var app = new Vue({
+				el:"#app",
+				data:{isLogin:false}
+			});
+			var app1 = new Vue({
+				el:"#app1",
+				data:{isLogin:true}
+			});
+			
+			
+		</script>
+	</body>
+</html>
