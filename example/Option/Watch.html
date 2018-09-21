@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../../assets/js/vue.js"></script> 
+		<title>Watch option选项 监控数据></title>
+	</head>
+
+	<body>
+		<h1>Watch option选项 监控数据</h1>
+		<div id="app">
+			<p>温度指数: {{wendu}}°C</p>
+			<p>穿衣指数: {{ cuanyi }}</p>
+			<p><button @click="shenggao">升高温度</button><button @click="jiangdi">降低温度</button></p>
+		</div>
+		
+		<script type="text/javascript">
+			var chaunyiarray=["体恤短袖","夹克长裙","棉衣羽绒服"];
+			var app = new Vue({
+				el:"#app",
+				data:{
+					wendu:14,
+					cuanyi:"夹克长裙"
+				},
+				methods:{
+					shenggao:function(){
+						this.wendu+=5;
+					},
+					jiangdi:function(){
+						this.wendu-=5;
+					},
+				},
+// 				watch:{
+// 					wendu:function(newVal,oldVal){
+// 						if(newVal>=26){
+// 							this.cuanyi=chaunyiarray[1]
+// 						}else if(newVal>10 && newVal<26){
+// 							this.cuanyi=chaunyiarray[2]
+// 						}else{
+// 							this.cuanyi=chaunyiarray[3]
+// 						}
+// 					}
+// 				}
+			});
+			app.$watch("wendu",function(newVal,oldVal){
+				if(newVal>=26){
+					this.cuanyi=chaunyiarray[0]
+				}else if(newVal>10 && newVal<26){
+					this.cuanyi=chaunyiarray[1]
+				}else{
+					this.cuanyi=chaunyiarray[2]
+				}
+			});
+		</script>
+	</body>
+
+</html>

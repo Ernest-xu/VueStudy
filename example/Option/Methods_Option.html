@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../../assets/js/vue.js"></script> 
+		<title>Methods Option 方法选项</title>
+	</head>
+
+	<body>
+		<h1>Methods Option 方法选项</h1>
+		<div id="app">
+			<hr />
+			{{ a }}
+			<p><button @click="add(2,$event)">add</button></p>
+			<h5>用.native修饰器来调用构造器里的add方法</h5>
+			<p>
+				<btn @click.native="add(3)"></btn>
+			</p>
+			<h3>四、作用域外部调用构造器里的方法</h3>
+			<h5>这种不经常使用，如果你出现了这种情况，说明你的代码组织不够好。</h5>
+			<p>
+				<button onclick="app.add(4)" >外部调用构造器里的方法</button>
+			</p>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var btn={
+				template:'<button>组件Add</button>'
+			}
+			var app = new Vue({
+				el:"#app",
+				data:{
+					a:1
+					
+				},
+				methods:{
+					add:function(num,event){
+						console.info(event);
+						if(num!=""){this.a+=num}
+						else{this.a++}
+					}
+				},
+				components:{
+					"btn":btn
+				}
+			});
+		</script>
+	</body>
+
+</html>

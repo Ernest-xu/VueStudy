@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Mixins 混入选项操作</title>
+</head>
+<body>
+    <h1>Mixins 混入选项操作</h1>
+    <hr>
+    <div id="app">
+        <p>num:{{ num }}</p>
+        <P><button @click="add">增加数量</button></P>
+		<P><button @click="minus">减少数量</button></P>
+    </div>
+    <script type="text/javascript">
+        //额外临时加入时，用于显示日志
+        var addLog={
+            updated:function(){
+                console.log("数据放生变化,变化成"+this.num+".");
+            }
+        }
+/* 		PS：当混入方法和构造器的方法重名时，混入的方法无法展现，也就是不起作用。*/  
+		Vue.mixin({
+			updated:function(){
+				console.log('我是全局被混入的');
+			}
+		})
+        var app=new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                },
+				minus:function(){
+					this.num--;
+				}
+            },
+            //mixins:[addLog]//混入
+        })
+    </script>
+</body>
+</html>
